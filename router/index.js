@@ -1,0 +1,12 @@
+//fetching existing or same instace of express as it is requiring second time 
+const express=require('express');
+
+//create a router handlers
+const router = express.Router();
+
+const homeController=require('../controller/home_controller');
+
+router.get('/',homeController.home);
+
+
+module.exports = router;
