@@ -7,16 +7,14 @@ const app=express();
 //port
 const port=8000;
 
+const expressLayouts=require('express-ejs-layouts');
+
 
 app.use(express.urlencoded());
-
-app.use('/',require('./router/index'));
 
 //middleware to use static files like .cc,.js
 app.use(express.static('assets'));
 
-
-const expressLayouts=require('express-ejs-layouts');
 app.use(expressLayouts);
 
 app.set('layout extractStyles',true);
@@ -25,6 +23,8 @@ app.set('layout extractScripts',true);
 //setting up ejs (views engine)
 app.set('view engine','ejs');
 app.set('views','./views');
+
+app.use('/',require('./router/index'));
 
 app.listen(port,function(err){
     if(err){

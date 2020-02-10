@@ -1,0 +1,11 @@
+footer{
+    bottom:0px;
+    position:fixed;
+    width:100%;
+    height:40px;
+    background-color: grey;
+    text-align: left;
+}
+h3{
+    margin:10px;
+}
