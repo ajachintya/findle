@@ -1,14 +1,31 @@
 header{
-    height:40px;
     width: 100%;
     background-color: rgb(181, 36, 36);
 }
 
-#main > #heading > a{
-    position: absolute;
-    margin-left:20px;
-    margin-top:6px;
-    text-decoration: none;
+#main{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+#head1 {
+    margin-top: -10px;
     color: white;
     font-family:monospace;
+    font-size: 13px;
+}
+
+#user_details{
+    margin-top: 7px;
+    color: white;
+    font-family:monospace;
+    font-size: 18px;
+}
+
+a{
+    text-decoration: none;
+    color:white;
 }

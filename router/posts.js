@@ -4,12 +4,8 @@ const express=require('express');
 //create a router handlers
 const router = express.Router();
 
-const homeController=require('../controller/home_controller');
+const postsController=require('../controller/posts_controller');
 
-
-router.get('/',homeController.home);
-
-router.use('/users',require('./users'));
-router.use('/posts',require('./posts'));
+router.post('/posts',postsController.post);
 
 module.exports = router;

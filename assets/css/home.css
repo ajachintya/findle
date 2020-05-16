@@ -1,0 +1,17 @@
+#all_sec{
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    padding-left: 20px;
+    padding-right:20px;   
+}
+
+#sec1{
+    width:33.3%;
+}
+#sec2{
+    width:33.33%;
+}
+#sec3{
+    width:33.3%;
+}

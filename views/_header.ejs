@@ -1,7 +1,18 @@
 <header>
     <div id="main">
+        <div id="head1">
         <h2 id="heading">
             <a href="/">FINDLE</a>
         </h2>
+        </div>
+        <div id="user_details">
+            <% if(locals.user){ %>
+                <a href="/users/profile"><%= user.name %></a>
+                <a href="/users/signout">Sign Out</a>
+            <%} else { %>
+                <a href="/users/signin">Sign In</a>
+                <a href="/users/signup">Sign Up</a>
+            <%}%>    
+        </div>
     </div>
 </header>
