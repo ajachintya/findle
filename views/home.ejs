@@ -5,10 +5,24 @@
     </section>
     <section id="sec2">
             <h1>Posts</h1>
-            <form action="" id="new-post-form" method="POST">
+            <form action="/posts/create" id="new-post-form" method="POST">
                 <textarea name="content" id="" cols="30" rows="5" placeholder="Type Here..."></textarea>
                 <input type="submit" value="Post">
             </form>
+
+            <div id="posts-list-container">
+                    <% for(post of posts) { %>
+                           <p style="border: 1px solid black;">
+                            <%= post.content %>
+                            <br>
+                            <small>
+                                <%= post.user.name %>
+                            </small>
+                           </p>
+                            
+                    <%}%>    
+            </div>
+           
     </section>
     <section id="sec3">
 

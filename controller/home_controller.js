@@ -1,3 +1,10 @@
+const Post=require('../models/post');
+
 module.exports.home=(req,res) => {
-    return res.render('home');
-}
+    Post.find({}).populate('user').exec(function(err,posts){
+        return res.render('home',{
+            title:"Findle",
+            posts:posts
+        });
+    });
+};
