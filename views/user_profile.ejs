@@ -2,6 +2,16 @@
 
 <h1>Findle Profile!</h1>
 
-<p>NAME: <%= user.name %></p>
-<p>EMAIL: <%= user.email %></p>
 
+
+<% if(user.id == profile_user.id ) {%>
+    <form action="/users/update/<%= profile_user.id %>"  enctype="multipart/form-data" method="POST">
+        Change Name:<input type="text" name="name" value="<%= profile_user.name %>" placeholder="Enter new name" required> <br> <br>
+        Change Email: <input type="email" name="email" value="<%= profile_user.email %>" id="" placeholder="Enter new email" required> <br> <br>
+        <input type="file" name="avatar" placeholder="Profile Picture">
+        <input type="submit" value="Update">
+    </form>
+<%}else{%>
+    <p>NAME: <%= profile_user.name %></p>
+<p>EMAIL: <%= profile_user.email %></p>
+<%}%>

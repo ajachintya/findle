@@ -7,7 +7,8 @@ const router = express.Router();
 
 const usersController=require('../controller/users_controller');
 
-router.get('/profile',passport.checkAuthentication,usersController.profile);
+router.get('/profile/:id',passport.checkAuthentication,usersController.profile);
+router.post('/update/:id',passport.checkAuthentication,usersController.update);
 router.get('/signin',usersController.signin);
 router.get('/signup',usersController.signup);
 router.post('/create',usersController.create);
@@ -16,7 +17,6 @@ router.post('/createSession',passport.authenticate(
     'local', //strategy
     {failureRedirect:'/users/signin'},
 ),usersController.createSession);
-
 
 router.get('/signout',usersController.destroySession);
 

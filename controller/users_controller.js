@@ -1,20 +1,23 @@
 const User=require('../models/users');
 
 module.exports.profile=(req,res) => {
-    if(req.cookies.user_id){
-          User.findById(req.cookies.user_id,function(err,user){
-               if(user){
-                    
-                    return res.render('user_profile',{
-                         title:"User Profile",
-                         user:user
-                    })
-               }
-               return res.redirect('/users/signin');
+     User.findById(req.params.id,function(err,user){
+          return res.render('user_profile',{
+               title:'User Profile',
+               profile_user:user
+          })
+     })
+
+}
+
+module.exports.update=(req,res) => {
+     if(req.user.id == req.params.id){
+          User.findByIdAndUpdate(req.params.id,req.body,function(err,user){
+               return res.redirect('back');
           });
-    }else{
-         return res.redirect('/users/signin');
-    }
+     }else{
+          return res.status(401).send('Unauthorised');
+     }
 }
 
 module.exports.signin=(req,res) => {
@@ -32,6 +35,7 @@ module.exports.signup=(req,res) => {
 }
 
 module.exports.create=(req,res) => {
+     
      if(req.body.password != req.body.confirm_password){
           return res.redirect('back');
      }
@@ -53,13 +57,13 @@ module.exports.create=(req,res) => {
 };
 
 module.exports.createSession = function(req,res){
+     req.flash('success','Logged in Successfully');
 
-    
-     return res.redirect('/users/profile');
-
+     return res.redirect('/');
 };
 
 module.exports.destroySession=(req,res) =>{
      req.logout();
+     req.flash('success','Logged out Successfully');
      return res.redirect('/');
 }

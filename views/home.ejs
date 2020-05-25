@@ -5,26 +5,29 @@
     </section>
     <section id="sec2">
             <h1>Posts</h1>
+            <% if(locals.user){%>
             <form action="/posts/create" id="new-post-form" method="POST">
-                <textarea name="content" id="" cols="30" rows="5" placeholder="Type Here..."></textarea>
+                <textarea name="content" id="" cols="30" rows="5" placeholder="Type Here..." required></textarea>
                 <input type="submit" value="Post">
             </form>
-
-            <div id="posts-list-container">
+            <%}%>
+            <div id=" //method to submit a form data for new posts using ajax">
                     <% for(post of posts) { %>
-                           <p style="border: 1px solid black;">
-                            <%= post.content %>
-                            <br>
-                            <small>
-                                <%= post.user.name %>
-                            </small>
-                           </p>
-                            
+                    <%- include('_post') -%>
                     <%}%>    
             </div>
            
     </section>
     <section id="sec3">
-
+        <div id="friend-list">
+        <h1>Friends!</h1>
+        <% for(u of all_users) { %>
+            <p >
+                <a href="/users/profile/<%= u.id %>" style="color: black;"><%= u.name %></a>
+            </p>
+        <%}%>  
+        </div> 
     </section>
 </section>
+<script src="/js/post_comments.js"></script>
+<script src="/js/home_posts.js"></script>
